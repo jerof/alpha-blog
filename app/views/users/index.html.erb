@@ -1,0 +1,14 @@
+<h1 align="center">All Alphabloggers</h1>
+
+<div class="row center">
+  <div class="container">
+    <div class="col-md-8 col-md-offset-2">
+    <% @users.each do |user| %>
+     <div class="well">
+       <h3><%= link_to user.username, user_path(user) %></h3>
+       <p class="lead"><%= link_to pluralize(user.articles.count, "article"), user_path(user) %></p>
+     </div>
+     <% end %>
+   </div>
+  </div>
+</div>
