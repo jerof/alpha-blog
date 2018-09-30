@@ -4,7 +4,7 @@
     <div class="panel panel-danger">
       <div class="panel-heading">
         <div class="panel-body">
-          <h3><%= pluralize(obj.errors.count, "error") %> prevented the article from being saved:</h3>
+          <h3><%= pluralize(obj.errors.count, "error") %> prevented the changes to be made:</h3>
             <ul>
               <% obj.errors.full_messages.each do |msg| %>
                 <li><%= msg %></li>
