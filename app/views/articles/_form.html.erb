@@ -6,18 +6,34 @@
   </ul>
 <% end %>
 
-<%= form_for @article do |f| %>
+<%= form_for(@article, :html => { class: "form-horizontal", role:"form" }) do |f| %>
+<div class="row">
+  <div class="col-xs-8 col-xs-offset-2">
   <div class="form-group">
-    <%= f.label :title %> <br>
-    <%= f.text_field :title %>
+    <div class="col-sm-2 control-label">
+      <%= f.label :title %>
+    </div>
+    <div class="col-sm-8">
+      <%= f.text_field :title, class:"form-control", placeholder: "Enter title", autofocus: true %>
+    </div>
   </div>
+
   <div class="form-group">
-    <%= f.label :description %> <br>
-    <%= f.text_area :description %>
+    <div class="col-sm-2 control-label">
+      <%= f.label :description %>
+    </div>
+    <div class="col-sm-8">
+      <%= f.text_area :description, class:"form-control", placeholder: "Enter description", autofocus: true %>
+    </div>
   </div>
-  <div>
-    <%= f.submit %>
+
+  <div class="form-group">
+    <div class="col-sm-offset-2 col-sm-8">
+      <%= f.submit class:"btn btn-primary" %>
+    </div>
   </div>
+</div>
+</div>
 <% end %>
 
-<p><%= link_to "Return to articles page", articles_path %></p>
+<p align="center">[ <%= link_to "Return to articles page", articles_path %> ]</p>
