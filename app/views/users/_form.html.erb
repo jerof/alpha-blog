@@ -11,25 +11,34 @@
   <div class="col-xs-8 col-xs-offset-2">
   <div class="form-group">
     <div class="col-sm-2 control-label">
-      <%= f.label :title %>
+      <%= f.label :username %>
     </div>
     <div class="col-sm-8">
-      <%= f.text_field :title, class:"form-control", placeholder: "Enter title", autofocus: true %>
+      <%= f.text_field :username, class:"form-control", placeholder: "Enter username", autofocus: true %>
     </div>
   </div>
 
   <div class="form-group">
     <div class="col-sm-2 control-label">
-      <%= f.label :description %>
+      <%= f.label :email %>
     </div>
     <div class="col-sm-8">
-      <%= f.text_area :description, class:"form-control", placeholder: "Enter description", autofocus: true %>
+      <%= f.email_field :email, class:"form-control", placeholder: "Enter email", autofocus: true %>
+    </div>
+  </div>
+
+  <div class="form-group">
+    <div class="col-sm-2 control-label">
+      <%= f.label :password %>
+    </div>
+    <div class="col-sm-8">
+      <%= f.password_field :email, class:"form-control", placeholder: "Enter password", autofocus: true %>
     </div>
   </div>
 
   <div class="form-group">
     <div class="col-sm-offset-2 col-sm-8">
-      <%= f.submit class:"btn btn-primary" %>
+      <%= f.submit(@user.new_record? ? "Sign Up" : "Update account", class:"btn btn-primary") %>
     </div>
   </div>
 </div>
