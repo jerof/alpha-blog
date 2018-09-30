@@ -1,9 +1,17 @@
-<h1>View article</h1>
+<h1 align="center"><%= @article.title %></h1>
 
-<h3>Title: <%= @article.title %></h3>
-
-<p>Description: <%= @article.description %></p>
-
-<p><%= link_to "Edit", edit_article_path(@article) %></p>
-<p><%= link_to "Delete", article_path(@article), method: :delete, data: { confirm: "Are you sure?" } %></p>
-<p><%= link_to "Return to articles page", articles_path %></p>
+<div class="row">
+ <div class="container">
+   <div class="col-sm-8 col-sm-offset-2">
+     <div class="well">
+       <p class="lead">Description: <br> <%= @article.description %></p>
+       <div class="article-actions">
+         <p><%= link_to "Edit", edit_article_path(@article), class:"btn btn-primary btn-xs" %>
+         <%= link_to "Delete", article_path(@article), method: :delete, data: { confirm: "Are you sure?" },
+         class:"btn btn-danger btn-xs" %>
+         <%= link_to "View all articles", articles_path, class:"btn btn-success btn-xs" %></p>
+       </div>
+     </div>
+   </div>
+  </div>
+</div>
