@@ -1,5 +1,6 @@
 class UsersController < ApplicationController
 before_action :set_user, only: [:edit, :update, :destroy]
+before_action :require_same_user, only: [:edit, :update]
   def index
     @users = User.all
   end
@@ -11,8 +12,9 @@ before_action :set_user, only: [:edit, :update, :destroy]
   def create
     @user = User.new(user_params)
     if @user.save
+      session[:user_id] = @user.id
       flash[:success] = "Welcome to Alphablog, #{@user.username}"
-      redirect_to articles_path(@article)
+      redirect_to user_path(@user)
     else
       render 'new'
     end
@@ -40,6 +42,13 @@ before_action :set_user, only: [:edit, :update, :destroy]
 
   def set_user
     @user = User.find(params[:id])
+  end
+
+  def require_same_user
+    if current_user != @user
+      flash[:danger] = "You can only edit your own account"
+      redirect_to root_path
+    end
   end
 
 end
