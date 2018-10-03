@@ -6,14 +6,16 @@
      <div class="well">
        <p class="lead">Description: <br> <%= @article.description %></p>
        <div class="article-meta-details">
-         <small>Created by: <%= @article.user.username %>
+         <small>Created by: <%= @article.user.username if @article.user %>
           about <%= time_ago_in_words(@article.created_at) %> ago,
          last updated: <%= time_ago_in_words(@article.updated_at) %> ago</small>
        </div>
        <div class="article-actions">
+         <% if logged_in? && (current_user == @article.user || current_user.admin? ) %>
          <p><%= link_to "Edit", edit_article_path(@article), class:"btn btn-primary btn-xs" %>
          <%= link_to "Delete", article_path(@article), method: :delete, data: { confirm: "Are you sure?" },
          class:"btn btn-danger btn-xs" %>
+         <% end %>
          <%= link_to "View all articles", articles_path, class:"btn btn-success btn-xs" %></p>
        </div>
      </div>
