@@ -1,21 +1,4 @@
-<div class="container">
-  <div class="col-sm-8 col-sm-offset-2">
-    <% if obj.errors.any? %>
-    <div class="panel panel-danger">
-      <div class="panel-heading">
-        <div class="panel-body">
-          <h3><%= pluralize(obj.errors.count, "error") %> prevented the changes to be made:</h3>
-            <ul>
-              <% obj.errors.full_messages.each do |msg| %>
-                <li><%= msg %></li>
-              <% end %>
-            </ul>
-        </div>
-      </div>
-    </div>
-    <% end %>
-  </div>
-</div>
+<%= render 'shared/errors', obj: @user %>
 
 <%= form_for(obj, :html => { class: "form-horizontal", role:"form" }) do |f| %>
 <div class="row">
