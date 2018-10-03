@@ -1,21 +1,4 @@
-<div class="container">
-  <div class="col-sm-8 col-sm-offset-2">
-    <% if obj.errors.any? %>
-    <div class="panel panel-danger">
-      <div class="panel-heading">
-        <div class="panel-body">
-          <h3><%= pluralize(obj.errors.count, "error") %> prevented the article from being saved:</h3>
-            <ul>
-              <% obj.errors.full_messages.each do |msg| %>
-                <li><%= msg %></li>
-              <% end %>
-            </ul>
-        </div>
-      </div>
-    </div>
-    <% end %>
-  </div>
-</div>
+<%= render 'shared/errors', obj: @article %>
 
 <%= form_for(obj, :html => { class: "form-horizontal", role:"form" }) do |f| %>
 <div class="row">
@@ -35,6 +18,16 @@
     </div>
     <div class="col-sm-8">
       <%= f.text_area :description, class:"form-control", placeholder: "Enter description", autofocus: true %>
+    </div>
+  </div>
+
+  <div class="form-group">
+    <div class="row">
+      <div class="col-sm-offset-2 col-sm-8">
+        <%= f.collection_check_boxes :category_ids, Category.all, :id, :name do |cb| %>
+          <% cb.label(class:"checkbox-inline input_checkbox") {cb.check_box(class:"checkbox") + cb.text} %>
+        <% end %>
+      </div>
     </div>
   </div>
 
